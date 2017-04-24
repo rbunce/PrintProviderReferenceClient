@@ -1,5 +1,5 @@
 <?php
-//route with PUT to format "/order/{reference}"
+//route with PUT to format "/order/{reference}/status"
 require_once '../app/config/config.php';
 
 //Check auth headers
