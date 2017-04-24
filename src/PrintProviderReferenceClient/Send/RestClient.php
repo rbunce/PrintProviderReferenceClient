@@ -55,7 +55,7 @@ class PrintProviderReferenceClient_Send_RestClient
      * @param string $itemId
      * @param $orderInfo
      * @return mixed
-     * @throws InkRouter_Exceptions_InkRouterNotAvailableException|InkRouter_Exceptions_AuthenticationException|InkRouter_Exceptions_ProcessingException|InkRouter_Exceptions_RejectionException
+     * @throws Exception
      */
     public function updateOrder($orderId, $itemId, $orderInfo)
     {
@@ -64,7 +64,8 @@ class PrintProviderReferenceClient_Send_RestClient
     }
 
     /**
-     * @throws InkRouter_Exceptions_InkRouterNotAvailableException|InkRouter_Exceptions_AuthenticationException|InkRouter_Exceptions_ProcessingException|InkRouter_Exceptions_RejectionException
+     * @return mixed
+     * @throws Exception
      **/
     private function sendRequest($url, $httpMethod, $headers, $body = null) {
         $curlResource = curl_init();
@@ -93,7 +94,7 @@ class PrintProviderReferenceClient_Send_RestClient
         curl_setopt($curlResource, CURLOPT_RETURNTRANSFER, true);
         $responseMessage = curl_exec($curlResource);
         if ($responseMessage === false) {
-            throw new InkRouter_Exceptions_InkRouterNotAvailableException();
+            throw new Exception('No Response from ' . $url);
         }
 
         $statusCode = curl_getinfo($curlResource, CURLINFO_HTTP_CODE);
@@ -103,13 +104,13 @@ class PrintProviderReferenceClient_Send_RestClient
             case 200:
                 return $responseMessage;
             case 401:
-                throw new InkRouter_Exceptions_AuthenticationException($responseMessage);
+                throw new Exception($responseMessage);
             case 500:
-                throw new InkRouter_Exceptions_ProcessingException($responseMessage);
+                throw new Exception($responseMessage);
             case 409:
-                throw new InkRouter_Exceptions_RejectionException($responseMessage);
+                throw new Exception($responseMessage);
             default:
-                throw new InkRouter_Exceptions_ProcessingException('Unknown error occured');
+                throw new Exception('Unknown error occured');
         }
     }
 }

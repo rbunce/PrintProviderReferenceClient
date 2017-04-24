@@ -1,8 +1,31 @@
+<script>
+    function selectChange(select)
+    {
+        if (select.value == 'SHIP') {
+            document.getElementById('trackingNumberDiv').style.display = '';
+            document.getElementById('costDiv').style.display = '';
+            document.getElementById('weightDiv').style.display = '';
+        } else {
+            document.getElementById('trackingNumberDiv').style.display = 'none';
+            document.getElementById('costDiv').style.display = 'none';
+            document.getElementById('weightDiv').style.display = 'none';
+        }
+    }
+
+</script>
+
 <form method="Post">
-    Reference ID: <input type="text" id="referenceId" name = "referenceId"><br>
-    Update Type:
-    <select id="status" name="status">
+    <table>
+    <tr><td>Reference ID:</td> <td><input type="text" id="referenceId" name = "referenceId"></td></tr>
+    <tr><td>OrderItem ID:</td> <td><input type="text" id="orderItemId" name = "orderItemId"></td></tr>
+    <tr><td>Update Type:</td><td>
+    <select id="type" name="type" onChange="selectChange(this)">
         %%%options%%%
-    </select><br>
+    </select></td></tr>
+    <tr id="trackingNumberDiv" style="display: none;"><td>Tracking Number: </td><td><input type="text" id="trackingNumber" name = "trackingNumber"></td></tr>
+    <tr id="costDiv" style="display: none;"><td>Cost: </td><td><input type="text" id="cost" name = "cost"></td></tr>
+    <tr id="weightDiv" style="display: none;"><td>Weight: </td><td><input type="text" id="weight" name = "weight"></td></tr>
+    </table>
     <input type="submit">
 </form>
+
