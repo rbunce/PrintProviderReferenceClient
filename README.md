@@ -19,47 +19,47 @@ Installation
 - Unpack downloaded zip in any directory in your project (for example /path/to/your/project/libs/InkRouterPrintProvider)
 - Setup Apache to use the /web directory
 
-    <VirtualHost *:80>
-        ServerName %insert domain used%
-        ServerAlias %insert domain used%
+        <VirtualHost *:80>
+            ServerName %insert domain used%
+            ServerAlias %insert domain used%
 
-        DocumentRoot %PATH_TO_DIR%/web
+            DocumentRoot %PATH_TO_DIR%/web
 
-        <Directory %PATH_TO_DIR%/web>
-            Options FollowSymLinks
-            AllowOverride None
-            Require all granted
+            <Directory %PATH_TO_DIR%/web>
+                Options FollowSymLinks
+                AllowOverride None
+                Require all granted
 
-        </Directory>
-    </VirtualHost>
+            </Directory>
+        </VirtualHost>
 
-    <IfModule mod_ssl.c>
-    <VirtualHost *:443>
-        ServerName %insert domain used%
-        ServerAlias %insert domain used%
+        <IfModule mod_ssl.c>
+        <VirtualHost *:443>
+            ServerName %insert domain used%
+            ServerAlias %insert domain used%
 
-        DocumentRoot %PATH_TO_DIR%/web
+            DocumentRoot %PATH_TO_DIR%/web
 
-        <Directory %PATH_TO_DIR%/web>
-            Options FollowSymLinks
-            AllowOverride None
-            Require all granted
-        </Directory>
+            <Directory %PATH_TO_DIR%/web>
+                Options FollowSymLinks
+                AllowOverride None
+                Require all granted
+            </Directory>
 
-        #   SSL Engine Switch:
-        #   Enable/Disable SSL for this virtual host.
-        SSLEngine on
+            #   SSL Engine Switch:
+            #   Enable/Disable SSL for this virtual host.
+            SSLEngine on
 
-        #   A self-signed (snakeoil) certificate can be created by installing
-        #   the ssl-cert package. See
-        #   /usr/share/doc/apache2.2-common/README.Debian.gz for more info.
-        #   If both key and certificate are stored in the same file, only the
-        #   SSLCertificateFile directive is needed.
-        SSLCertificateFile    /etc/ssl/certs/ssl-cert-snakeoil.pem
-        SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+            #   A self-signed (snakeoil) certificate can be created by installing
+            #   the ssl-cert package. See
+            #   /usr/share/doc/apache2.2-common/README.Debian.gz for more info.
+            #   If both key and certificate are stored in the same file, only the
+            #   SSLCertificateFile directive is needed.
+            SSLCertificateFile    /etc/ssl/certs/ssl-cert-snakeoil.pem
+            SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
 
-    </VirtualHost>
-    </IfModule>
+        </VirtualHost>
+        </IfModule>
 
 - Setup configs in /app/config/config.php from info in InkRouter portal
 
@@ -72,9 +72,9 @@ Workflow
 
 There exist 3 routes to Receive orders and updates and 1 route to send updates
 
-- Route with POST to format "/order" to receive new orders
-- Route with PUT to format "/order/{reference}" to receive order updates
-- Route with PUT to format "/order/{reference}/status" to receive status updates
+- POST Route to format "/order" to receive new orders
+- PUT Route to format "/order/{reference}" to receive order updates
+- PUT Route to format "/order/{reference}/status" to receive status updates
 - Route to send update form "/sendUpdate"
 
 
