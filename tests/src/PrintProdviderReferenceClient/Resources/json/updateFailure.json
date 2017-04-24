@@ -1,0 +1,73 @@
+{
+  "printCustomerId": "overnightprints.com",
+  "poInfo": {
+    "agentId": "LisaL",
+    "currency": "USD"
+  },
+  "order": {
+    "orderId": "610288-1001-C",
+    "orderDate": "2017-02-09T13:28:19-08:00",
+    "deliveryDate": "2017-03-22T14:28:19-07:00",
+    "contact": {
+      "name": "Bob Tryon",
+      "phone": "4258775938",
+      "eMail": "bob.tryon@opensoftdev.com"
+    },
+    "shipType": {
+      "shipMethod": "UPS",
+      "shipService": "2DAYAIR"
+    },
+    "requester": {
+      "name": "Jaisor Prints",
+      "contract": "Standard",
+      "paymentTerm": "FREE"
+    },
+    "shipAddress": {
+      "attention": "Bob Tryon",
+      "street": "2357 Oak Lane",
+      "city": "Layton",
+      "state": "UT",
+      "zip": "84040",
+      "country": "US"
+    },
+    "OrderItems": [
+      {
+        "orderItemId": "pg123456789-001",
+        "productType": "business cards",
+        "substrate": "14PT",
+        "quantity": 100,
+        "regionSize": "US",
+        "cost": 2.80,
+        "Attributes": [
+          {
+            "scalarStringAttribute": {
+              "type": "MEDIA_COLOR",
+              "value": "black"
+            }
+          },
+          {
+            "scalarBooleanAttribute": {
+              "type": "LABELING",
+              "value": "false"
+            }
+          }
+        ],
+        "Sides": [
+          {
+            "fileUrl": "https://s3.amazonaws.com/onptrade-dev-s3-1/71b4890f-1f01-4a9d-8539-d4d22bd21e07.pdf",
+            "fileHash": "513c429747eb3081802897450020de7f",
+            "coating": "NONE",
+            "orientation": "Landscape"
+          },
+          {
+            "sideNumber": 1,
+            "fileUrl": "https://s3.amazonaws.com/onptrade-dev-s3-1/d3ddf0ea-c00a-4856-8ee3-44d73b1d56c8.pdf",
+            "fileHash": "a84d9a6d573a254b2041b0838556a5f9",
+            "coating": "NONE",
+            "orientation": "Landscape"
+          }
+        ]
+      }
+    ]
+  }
+}

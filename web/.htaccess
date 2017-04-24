@@ -7,4 +7,5 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 
 RewriteRule ^order$ ReceiveCreateRoute.php
 RewriteRule ^order/(\d+)*$ ReceiveUpdateRoute.php?reference=$1
+RewriteRule ^order/(\d+)*/status$ ReceiveStatusRoute.php?reference=$1
 RewriteRule ^sendUpdate$ SendUpdateRoute.php
