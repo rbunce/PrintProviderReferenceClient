@@ -1,5 +1,4 @@
 <?php
-require_once 'bootstrap.php';
 
 $config = array(
     'inkrouter_client_id' => '',

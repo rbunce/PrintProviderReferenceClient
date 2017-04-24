@@ -1,4 +1,10 @@
 <?php
+if (!file_exists('config.php')) {
+    echo 'Please copy config.php.dist to config.php and config settings';
+    exit;
+}
+
+require_once 'config.php';
 
 function autoloadPPRC($class)
 {

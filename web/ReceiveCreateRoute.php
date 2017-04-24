@@ -1,6 +1,6 @@
 <?php
 //route with POST to format "/order"
-require_once '../app/config/config.php';
+require_once '../app/config/bootstrap.php';
 
 //Check auth headers
 //X-InkRouter-Client and X-InkRouter-ApiKey for what is setup in your inkrouter portal for your binding info

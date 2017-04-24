@@ -1,6 +1,6 @@
 <?php
 //send status updates to inkrouter"
-require_once '../app/config/config.php';
+require_once '../app/config/bootstrap.php';
 
 if (!empty($_POST)) {
     $client = new PrintProviderReferenceClient_Send_RestClient($config['inkrouter_base_url'], $config['inkrouter_client_id'], $config['inkrouter_api_key']);

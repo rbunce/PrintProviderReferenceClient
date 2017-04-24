@@ -61,7 +61,7 @@ Installation
         </VirtualHost>
         </IfModule>
 
-- Setup configs in /app/config/config.php from info in InkRouter portal
+- Copy /app/config/config.php.dist to /app/config/config.php and setup configs from info in InkRouter portal
 
       'inkrouter_client_id' => '',
       'inkrouter_base_url' => '',
