@@ -1,8 +1,10 @@
 Options +FollowSymLinks
+Options -Indexes
 RewriteEngine On
 
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 
-RewriteRule ^order$ CreateRoute.php
-RewriteRule ^order/(\d+)*$ UpdateRoute.php?reference=$1
+RewriteRule ^order$ ReceiveCreateRoute.php
+RewriteRule ^order/(\d+)*$ ReceiveUpdateRoute.php?reference=$1
+RewriteRule ^sendUpdate$ SendUpdateRoute.php

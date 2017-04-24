@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of InkRouter-PHP-SDK.
+ * This file is part of Print-Provider-Reference-Client.
  *
  * Copyright (c) Opensoft (http://opensoftdev.com)
  */
@@ -10,7 +10,7 @@
  * Client for sending requests to InkRouter
  *
  */
-class Print_Provider_Reference_Client_RestClient
+class PrintProviderReferenceClient_Send_RestClient
 {
 
 

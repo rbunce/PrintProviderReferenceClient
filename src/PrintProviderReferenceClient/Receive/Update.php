@@ -1,14 +1,25 @@
 <?php
 /**
- * This file is part of InkRouter-PHP-SDK.
+ * This file is part of Print-Provider-Reference-Client.
  *
  * Copyright (c) Opensoft (http://opensoftdev.com)
  */
 
-Class Print_Provider_Reference_Client_Update {
+Class PrintProviderReferenceClient_Receive_Update {
 
     private $errorMessage;
+    private $validator;
+    private $processor;
 
+    /**
+     * @param PrintProviderReferenceClient_Validator_ReceiveUpdateValidator $validator
+     * @param PrintProviderReferenceClient_Processor_ProcessorInterface $processor
+     */
+    public function __construct(PrintProviderReferenceClient_Validator_ReceiveUpdateValidator $validator, PrintProviderReferenceClient_Processor_ProcessorInterface $processor)
+    {
+        $this->validator = $validator;
+        $this->processor = $processor;
+    }
     /**
      * @param string $reference
      * @param string $json
@@ -31,8 +42,6 @@ Class Print_Provider_Reference_Client_Update {
 
             return $success;
         } else {
-            $this->errorMessage = 'Insert validation failure here!!!';
-
             return false;
         }
     }
@@ -53,15 +62,13 @@ Class Print_Provider_Reference_Client_Update {
     protected function Validate($reference, $model)
     {
         //Validate model for business logic
-        $requiredFields = array('order', 'reference');
-        $orderRequiredFields = array('orderId', 'orderDate', 'deliveryDate', 'shipType', 'requestor', 'shipAddress', 'orderItems');
-        $shipTypeRequiredFields = array('shipMethod', 'shipService');
-        $requestorRequiredFields = array('name', 'contract');
-        $shipAddressRequiredFields = array('attention', 'streetAddress', 'city', 'state', 'zip', 'country');
-        $orderItemRequiredFields = array('printGroupId', 'productType', 'paperType', 'quantity', 'regionSize', 'cost', 'sides');
-        $sideRequiredFields = array('pageNumber', 'fileUrl', 'fileHash', 'coating', 'orientation');
+        if($this->validator->Validate($model)) {
+            return true;
+        } else {
+            $this->errorMessage = $this->validator->getErrorMessage();
 
-        return true;
+            return false;
+        }
     }
 
     /**
@@ -72,8 +79,13 @@ Class Print_Provider_Reference_Client_Update {
     protected function Process($reference, $model)
     {
         //Process and load into system database
+        if ($this->processor->Process($reference, $model)) {
+            return true;
+        } else {
+            $this->errorMessage = $this->processor->getErrorMessage();
 
-        return true;
+            return false;
+        }
     }
 
 }
