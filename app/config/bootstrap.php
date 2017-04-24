@@ -1,5 +1,5 @@
 <?php
-if (!file_exists('config.php')) {
+if (!file_exists(__DIR__ . '/config.php')) {
     echo 'Please copy config.php.dist to config.php and config settings';
     exit;
 }
