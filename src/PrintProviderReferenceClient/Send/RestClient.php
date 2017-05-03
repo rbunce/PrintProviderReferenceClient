@@ -14,7 +14,7 @@ class PrintProviderReferenceClient_Send_RestClient
 {
 
 
-    private static $UPDATE_PATH = '/api/v1/order/%s/item/%s/status';
+    private static $UPDATE_PATH = '/api/v1/order/%s/item/%s';
 
 
     /**
@@ -59,7 +59,7 @@ class PrintProviderReferenceClient_Send_RestClient
      */
     public function updateOrder($orderId, $itemId, $orderInfo)
     {
-        return $this->sendRequest(sprintf($this->baseUrl . self::$UPDATE_PATH, $orderId, $itemId), 'PUT',
+        return $this->sendRequest(sprintf($this->baseUrl . self::$UPDATE_PATH, $orderId, $itemId), 'POST',
             array('Content-Type: application/json', 'accept: application/json'), json_encode($orderInfo));
     }
 
@@ -105,12 +105,14 @@ class PrintProviderReferenceClient_Send_RestClient
                 return $responseMessage;
             case 401:
                 throw new Exception($responseMessage);
+            case 404:
+                throw new Exception($url . ' 404 Not Found, incorrect order and/or order item');
             case 500:
                 throw new Exception($responseMessage);
             case 409:
                 throw new Exception($responseMessage);
             default:
-                throw new Exception('Unknown error occured');
+                throw new Exception('Unknown error occured from ' . $url . ' ' . $statusCode .  ' ' . $responseMessage);
         }
     }
 }
